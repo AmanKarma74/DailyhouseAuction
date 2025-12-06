@@ -22,7 +22,7 @@ import propertyGuideBanner from "../../public/assets/Property_Guide_Banner.png";
 async function getHandpickedProperties() {
   try {
     const res = await fetch(
-      `${process.env.NEXTAUTH_URL}/api/properties?limit=20`,
+      `${process.env.NEXT_PUBLIC_BASE_URL}/api/properties?limit=20`,
       {
         method: "GET",
         cache: "no-store", // always fresh
