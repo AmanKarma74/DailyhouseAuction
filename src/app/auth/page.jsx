@@ -1,56 +1,11 @@
-"use client"
-import React, { useState, useCallback } from 'react';
-import QuickLogin from '@/components/Auth/QuickLogin'; // Ensure correct path
-import QuickRegister from '@/components/Auth/QuickRegister'; // Ensure correct path
-import '../../styles/authentication.scss'; // New SCSS for the page layout
-import { useSearchParams } from "next/navigation";
+import React from 'react'
+import AuthPage from '@/components/Auth/AuthPage'
 
-const AuthPage = () => {
-    const [isRegisterView, setIsRegisterView] = useState(true);
+async function page({searchParams}) {
+    const redirectTo = (await searchParams).redirect || "/";
+  return (
+    <AuthPage redirectTo={redirectTo} />
+  )
+}
 
-    const searchParams = useSearchParams();
-    const redirectTo = searchParams.get("redirect_to") || "/";
-
-    // Handler to switch views
-    const toggleView = useCallback(() => {
-        setIsRegisterView(prev => !prev);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }, []);
-
-    // Placeholder for authentication success
-    const handleAuthSuccess = (userData) => {
-        alert(`Welcome, ${userData.name || userData.username || userData.email}!`);
-    };
-
-    return (
-        <div className="auth-page-container">
-
-            <div className="auth-card"> 
-                <div className="auth-content-wrapper"> 
-                    
-                    <h3 className='brand-logo'>Dailyhouse</h3>
-                    <h2 className="auth-header">
-                        {isRegisterView ? "Sign Up to see more" : "Login to your account"}
-                    </h2>
-
-                    {/* The rest of the content (forms) */}
-                    {isRegisterView ? (
-                        <QuickRegister 
-                            onSuccessfulRegistration={handleAuthSuccess} 
-                            onToggleView={toggleView}
-                            redirectTo={redirectTo} 
-                        />
-                    ) : (
-                        <QuickLogin 
-                            onSuccessfulLogin={handleAuthSuccess} 
-                            onToggleView={toggleView} 
-                            redirectTo={redirectTo}
-                        />
-                    )}
-                </div>
-            </div>
-        </div>
-    );
-};
-
-export default AuthPage;
+export default page
