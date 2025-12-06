@@ -1,0 +1,34 @@
+shopLocationType: String,  --> Shop, Office Space, Showroom
+propertyFloor: Number, --> Flat, Shop
+totalFloors: Number,  --> Flat, Shop
+carpetArea: Number,  --> House, Flat, Villa, Farmhouse, Shop, Warehouse, Office Space, Godown, Showroom
+superBuiltUpArea: Number,  --> House, Flat, Villa, Farmhouse, Shop, Warehouse, Office Space, Godown, Showroom
+plotSize: Number, --> Residential Plot, Commercial Plot, House, Villa, Farmhouse, Shop, Warehouse, Office Space, Godown, Showroom
+facing: String, --> House, Flat, Villa, Farmhouse, Residential Plot, Commercial Plot, Shop, Warehouse, Office Space, Godown, Showroom
+
+clearHeight: Number,   --> Warehouse, Showroom, Godown, Office Space
+columnSpacing: Number,   --> Warehouse, Showroom, Godown, Office Space
+
+transactionType: { type: String, enum: ["New Property", "Resale"] }, --> House, Flat, Villa, Farmhouse, Shop, Warehouse, Office Space, Godown, Showroom, Residential Land, Commercial Land, Industrial Land, Agricultural Land
+status: String, --> House, Flat, Villa, Farmhouse, Shop, Warehouse, Office Space, Godown, Showroom
+constructionYear: String, --> House, Flat, Villa, Farmhouse, Shop, Warehouse, Office Space, Godown, Showroom
+
+permission: String, --> Commercial Plot
+
+landSizeInSQFT: Number, --> Residential Land, Commercial Land, Industrial Land, Agricultural Land
+landSizeInAcre: Number, --> Residential Land, Commercial Land, Industrial Land, Agricultural Land
+landSizeInBigha: Number, --> Residential Land, Commercial Land, Industrial Land, Agricultural Land
+
+furniture: String,  --> House, Flat, Villa, Farmhouse, Shop, Warehouse, Office Space, Godown, Showroom
+totalBedrooms: { type: Number, default: 0 }, --> House, Flat, Villa, Farmhouse
+bathroom: { type: Number, default: 0 }, --> House, Flat, Villa, Farmhouse, Shop, Warehouse, Office Space, Godown, Showroom
+balcony: String, --> House, Flat, Villa, Farmhouse
+carParking: String, --> Residential Plot, Commercial Plot, Flat, House, Villa, Farmhouse, Shop, Warehouse, Office Space, Godown, Showroom
+
+waterSource: String,  --> Residential Plot, Commercial Plot, Flat, House, Villa, Farmhouse, Shop, Warehouse, Office Space, Godown, Showroom
+propertySurrounding: String,  --> Residential Plot, Commercial Plot, House, Villa, Farmhouse, Shop, Warehouse, Office Space, Godown, Showroom, Residential Land, Commercial Land, Industrial Land, Agricultural Land
+constructionType: String, --> Warehouse, Showroom, Godown, Office Space
+
+
+
+  

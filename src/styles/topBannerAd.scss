@@ -1,0 +1,80 @@
+.topBanner{
+    width: 100%;
+    margin: 0;
+    background-color: bisque;
+    height: 340px;
+    position: relative;
+    cursor: pointer;
+
+    @media (max-width: 1200px) {
+        height: 280px;
+    }
+    // Media Query for Mobile Devices
+    @media (max-width: 768px) {
+        height: 250px;
+    }
+    // Media Query for very small devices
+    @media (max-width: 480px) {
+        height: 250px;
+    }
+
+
+    .banner_link_wrapper{
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+
+        img{
+            align-self: center;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            transition: all 0.4s ease;
+    
+        }
+        &:hover img{
+            transform: scale(1.05);
+        }
+    }
+
+    .dots_container {
+        position: absolute;
+        bottom: 10px; /* Banner ke bottom se thoda upar */
+        width: 100%;
+        display: flex;
+        justify-content: center; /* Center mein align karein */
+        gap: 10px; /* Dots ke beech ki spacing */
+        z-index: 5; /* Image aur overlay se upar */
+        
+        // Media Query: Mobile par hide karna (safety check, though component logic handles this)
+        @media (max-width: 767px) {
+            display: none;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            background-color: rgba(255, 255, 255, 0.6); /* Semi-transparent white default */
+            border-radius: 50%; /* Circle shape */
+            cursor: pointer;
+            // transition: all 0.3s ease;
+            
+            &:hover {
+                background-color: rgba(255, 255, 255, 0.8);
+                scale: 1.1;
+            }
+
+            &.active {
+                width: 12px; /* Active dot ko thoda bada kar sakte hain */
+                height: 12px;
+                background-color: #1129ff; /* Solid white */
+                border: 2px solid #fff; /* Optional: Black border for visibility */
+            }
+        }
+    }
+
+
+}
+
+

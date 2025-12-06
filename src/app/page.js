@@ -1,66 +1,102 @@
+import React from "react";
 import Image from "next/image";
-import styles from "./page.module.css";
+import Link from "next/link";
+import "./home.scss";
 
-export default function Home() {
+// Components
+import Mainnavbar from "../components/Mainnavbar";
+import PageSearch from "../components/PageSearch";
+import LocalityCard from "../components/LocalityCard";
+import TopBannerAd from "../components/TopBannerAdComponent";
+import RecommendPropSection from "@/components/RecommendPropSection";
+import AdCard from "../components/AdCard";
+import CategoryCard from "../components/CategoryCard";
+
+// Assets
+import postPropertyBg2 from "../../public/assets/sell_property_background.svg";
+import propertyGuideBanner from "../../public/assets/Property_Guide_Banner.png";
+
+// -------------------------------
+// 🔥 FETCH PROPERTIES SERVER-SIDE
+// -------------------------------
+async function getHandpickedProperties() {
+  try {
+    const res = await fetch(
+      `${process.env.NEXTAUTH_URL}/api/properties?limit=20`,
+      {
+        method: "GET",
+        cache: "no-store", // always fresh
+      }
+    );
+
+    const data = await res.json();
+
+    if (!data.success) return [];
+
+    // Convert propertyImage → img[] (what UI expects)
+    return data.properties.map((item) => ({
+      ...item,
+      img: Array.isArray(item.propertyImage)
+        ? item.propertyImage.map((url) => ({
+            url,
+            preview: url,
+            name: "property-image",
+          }))
+        : [],
+    }));
+  } catch (err) {
+    console.error("Home Page Property Fetch Error:", err);
+    return [];
+  }
+}
+
+export default async function Home() {
+  // Fetch actual data from backend
+  const handpicked = await getHandpickedProperties();
+
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.js file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <>
+      <div className="mainnavbar_container_home">
+        <Mainnavbar featureColor="#fff" postBgColor="white" />
+      </div>
+
+      <TopBannerAd />
+
+      <section className="home_mid_content">
+        <PageSearch />
+        <AdCard />
+      </section>
+
+      {/* 🔥 Pass REAL backend data */}
+      <RecommendPropSection cardData={handpicked} />
+
+      <section className="appoint_advisor_section">
+        <div className="advisor_div">
+          <Image src={propertyGuideBanner} alt="Get Your Guide Now" />
         </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      <section className="locality_agent_section">
+        <LocalityCard />
+      </section>
+
+      <section className="categories">
+        <CategoryCard />
+      </section>
+
+      <section className="sell_property_section">
+        <div className="sell_image_container">
+          <Image src={postPropertyBg2} alt="" />
         </div>
-      </main>
-    </div>
+
+        <div className="sell_action_div">
+          <h4>List your property and connect with clients faster!</h4>
+          <Link href={"/post-property"}>
+            <button>Sell your property</button>
+          </Link>
+        </div>
+      </section>
+    </>
   );
 }
+

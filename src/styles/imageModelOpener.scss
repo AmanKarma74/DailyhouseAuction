@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,400;1,500;1,700;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,700;1,6..12,200&display=swap');
+
+//property.scss
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+:root{
+  --font: 'Open Sans', Arial, 'Helvetica Neue', sans-serif;
+  --font2: 'Montserrat', Arial, sans-serif;
+  --fontweight: 500;
+  --dimcolor: #373737dc;
+  --body-font: "Poppins", sans-serif;
+  --heading-font:'Nunito Sans', sans-serif;
+}
+
+.property_images_collage{
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    width: 36.5%;
+    cursor: pointer;
+
+    border-radius: 8px;
+    background: rgb(255, 255, 255) padding-box;
+    overflow: hidden;
+    height: 50vh;
+
+    .property_images_collage_upper{
+        font-size: 14px;
+        background-color: black;
+        height: 65%;
+        
+        img{
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+    }
+    .property_images_collage_bottom{
+        display: flex;
+        height: 35%;
+        width: 100%;
+        gap: 3px;
+
+        .property_images_collage_bottom_img_div{
+        height: 100%;
+        width: 33.33%;
+        position: relative;
+        img{
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+        p{
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.584);
+            color: white;
+            font-family: var(--font);
+            justify-content: center;
+            align-items: center;
+            font-size: 12px;
+            position: absolute;
+            gap: 5px;
+        }
+        }
+    }
+}
+
+.show_property_images{
+  display: none;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  position: absolute;
+  background-color:rgba(255, 255, 255);
+  z-index: 1100;
+  top: 0;
+  left: 0;
+  position: fixed;
+}
+.open_prop_image{
+  display: flex;
+}
+
+@media (max-width: 768px) {
+.property_images_collage{
+    width: 100%;
+
+    .property_images_collage_bottom{
+
+    .property_images_collage_bottom_img_div{
+        height: 85px;
+    }
+    }
+}
+}

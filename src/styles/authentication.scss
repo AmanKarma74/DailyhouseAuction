@@ -1,0 +1,308 @@
+/* <--------------------------------------- ROOT VARIABLE ------------------------------------------------> */
+/*===== GOOGLE FONTS =====*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,700;1,6..12,200&display=swap');
+/*===== VARIABLES CSS =====*/
+:root {
+  --header-height: 3rem;
+  /*========== Colors ==========*/
+  --first-color: #069C54;
+  --first-color-alt: #048654;
+  --mainTitle-color: #141824;
+  --title-color: #004dff;
+  --title-color-light:rgb(38, 101, 249);
+  --text-color: #6E7891;
+  --text-color-light: #A6A6A6;
+  --body-color: #fff;
+  --container-color: #F5F7FA;
+  /*========== Font and typography ==========*/
+  --body-font: "Poppins", sans-serif;
+  --heading-font:'Nunito Sans', sans-serif;
+  --biggest-font-size: 2.25rem;
+  --h1-font-size: 1.5rem;
+  --h2-font-size: 1.25rem;
+  --h3-font-size: 1rem;
+  --normal-font-size: .938rem;
+  --small-font-size: .813rem;
+  --smaller-font-size: .75rem;
+  /*========== Font weight ==========*/
+  --font-medium: 500;
+  --font-semi-bold: 600;
+  /*========== Margenes ==========*/
+  --mb-1: .5rem;
+  --mb-2: 1rem;
+  --mb-3: 1.5rem;
+  --mb-4: 2rem;
+  --mb-5: 2.5rem;
+  --mb-6: 3rem;
+  /*========== z index ==========*/
+  --z-tooltip: 10;
+  --z-fixed: 100;
+}
+@media screen and (min-width: 768px) {
+  :root {
+    --biggest-font-size: 4rem;
+    --h1-font-size: 2.25rem;
+    --h2-font-size: 1.5rem;
+    --h3-font-size: 1.25rem;
+    --normal-font-size: 1rem;
+    --small-font-size: .875rem;
+    --smaller-font-size: .813rem;
+  }
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/*========== BASE ==========*/
+*, ::before, ::after {
+  box-sizing: border-box;
+}
+
+a{
+    text-decoration: none;
+}
+
+input{
+    border: none;
+    outline: none;
+}
+.auth-page-container {
+    height: auto;
+    width: 100%;
+    display: flex; // Use Flexbox for centering instead of absolute positioning
+    justify-content: center;
+    align-items: center;
+    background-color: var(--body-color); // Use your body color
+    padding: 1rem 0;
+}
+
+.auth-card {
+    background-color: var(--container-color);
+    width: 90%; 
+    max-width: 32.5%; 
+    padding: 2.5rem; 
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    box-shadow: 2px 2px 3px -1px rgba(0, 0, 0, 0.5);
+    position: relative;
+    box-sizing: border-box;
+
+    .auth-content-wrapper {
+        width: 100%; 
+        position: static; 
+        margin: 0 auto;
+        text-align: center;
+        padding: 0 4rem;
+
+        .brand-logo{
+          color: var(--title-color);
+          margin-bottom: 2rem;
+          font-family: var(--body-font);
+        }
+        
+        .auth-header {
+            font-family: var(--body-font);
+            padding: 0 1rem;
+            font-size: var(--h1-font-size);
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: var(--mb-2);
+            color: var(--mainTitle-color);
+            
+            @media screen and (min-width: 768px) {
+                font-size: 2rem; 
+            }
+
+            &.small-header {
+                font-size: 25px; 
+            }
+        }
+
+        
+    }
+}
+
+
+// -----------------------------------------------------------------------------
+// Form Elements (Using your provided class names: .detail, .btn)
+// -----------------------------------------------------------------------------
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    
+    .form-group {
+        margin-bottom: var(--mb-2); 
+    }
+
+    .detail {
+          width: 100%;
+          height: 48px;
+          margin: 5px;
+          padding: 15px;
+          font-size: 15px;
+          color: var(--mainTitle-color);
+          border: 0.888889px solid rgb(199, 210, 224);
+          border-radius: 5px;
+  
+          &::placeholder{
+              color: var(--text-color-light);
+          }
+  
+          &:focus{
+              border: 2px solid var(--title-color);
+          }
+      }
+}
+
+// Maps to your .btn class
+.auth-submit-btn {
+    width: 100%;
+    height: 40px;
+    border: hidden;
+    border-radius: 20px; 
+    color: var(--body-color);
+    font-weight: var(--font-semi-bold);
+    font-size: 16px;
+    margin: var(--mb-2) 0; 
+    background-color: var(--title-color-light); 
+
+    &:hover {
+        background-color: var(--title-color); 
+        cursor: pointer;
+    }
+}
+
+.auth-error {
+    color: red;
+    margin: var(--mb-1) 0;
+    font-family: var(--body-font); 
+    font-size: var(--small-font-size);
+}
+
+// -----------------------------------------------------------------------------
+// Toggle and Footer Text
+// -----------------------------------------------------------------------------
+
+.formFooter {
+    font-family: var(--body-font);
+    opacity: 0.7;
+          p{
+              font-size: 12px;
+              margin: 10px;
+              font-family: var(--body-font);
+              b{
+                cursor: pointer;
+              }
+          }
+      }
+
+.auth-toggle {
+    font-size: var(--normal-font-size);
+    color: var(--text-color);
+    margin-top: var(--mb-2);
+    
+    .toggle-link {
+        background: none;
+        border: none;
+        color: var(--title-color-light);
+        text-decoration: none;
+        cursor: pointer;
+        margin-left: 5px;
+        padding: 0;
+        font-size: 16px;
+        font-family: var(--body-font);
+
+        &:hover {
+            color: var(--title-color);
+        }
+    }
+}
+
+// -----------------------------------------------------------------------------
+// Media Queries
+// -----------------------------------------------------------------------------
+
+@media (max-width: 768px) {
+
+.auth-page-container{
+    width: 100%;
+    padding: 0 5%;
+    height: auto;
+    min-height: 66vh;
+    max-height: 78vh;
+    align-items: baseline;
+    background-color: var(--body-color);
+
+    .auth-card {
+    margin-top: .7rem;
+    margin-bottom: 2rem;
+    width: 100%; 
+    max-width: 100%;
+    padding: 2rem 0 1rem 0; 
+
+    border: none;
+    box-shadow: none;
+    background-color: white;
+
+    .auth-content-wrapper {
+        width: 100%; 
+        position: static; 
+        margin: 0 auto;
+        text-align: center;
+        padding: 0 2rem;
+
+        .brand-logo{
+          margin-bottom: 1.5rem;
+        }
+        
+        .auth-header {
+            padding: 0 1rem;
+            font-size: 28px;
+            margin-bottom: var(--mb-2);
+
+            &.small-header {
+                font-size: 25px; 
+            }
+        }
+
+        .auth-form {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            
+            .form-group {
+                margin-bottom: var(--mb-2); 
+            }
+
+            .detail {
+                width: 100%;
+                height: 40px;
+                margin: 2px 5px;
+                padding: 15px;
+                font-size: 15px;
+                color: var(--mainTitle-color);
+                border: 0.888889px solid rgb(199, 210, 224);
+                border-radius: 5px;
+        
+                &::placeholder{
+                    color: var(--text-color-light);
+                }
+        
+                &:focus{
+                    border: 2px solid var(--title-color);
+                }
+            }
+        }
+
+        
+    }
+}
+}
+
+
+    
+}

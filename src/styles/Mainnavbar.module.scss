@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,400;1,500;1,700;1,900&display=swap');
+//mainnavbar.scss
+:root{
+
+  --font: 'Open Sans', Arial, 'Helvetica Neue', sans-serif;
+  --fontweight: 500;
+  --dimcolor: #373737dc;
+}
+
+// *{
+//     margin: 0;
+//     padding: 0;
+// }
+
+
+
+.main_navbar_container{
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    z-index: 1000;
+
+    // NAVBAR----------------------------------------------------------------------------->
+    
+    .navbar{
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        height: 72px;
+        padding: 1rem 2rem 1rem 3.3rem;
+        background-color: transparent;
+        z-index: 1000;
+        // background: linear-gradient(to bottom, rgba(0, 0, 0, .8), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0));
+    
+        .navleft{
+            font-size: 28px;
+            font-weight: 700;
+            cursor: pointer;
+            color: #FFC72C;
+    
+        }
+    
+        .navright{
+            display: flex;
+            align-items: center;
+
+            width: 50%;
+    
+            .navfeatures{
+                width: 65%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0 1rem;
+                margin-right: 2rem;
+    
+                a{
+                    font-family: var(--font);
+                    font-weight: 600;
+                    font-size: 14px;
+                    cursor: pointer;
+                }
+            }
+    
+            .navbar_post{
+                color: #041533;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                font-size: 14px;
+                font-family: var(--font);
+                font-weight: 600;
+                padding: 0 0.6rem;
+                border-radius: 5px;
+                width: 20%;
+                height: 2rem;
+                gap: 10px;
+                margin-right: 1rem;
+                cursor: pointer;
+
+                &_link{
+                    text-decoration: none;
+                    color: #041533;
+                }
+          
+                &_span{
+                  font-size: 9px;
+                  font-family: var(--font);
+                  background-color: rgb(30, 200, 3);
+                  color: #fff;
+                  padding: .2rem .4rem;
+                  border-radius: 5px;
+          
+                }
+              }
+    
+            .icon{
+                display: flex;
+                font-size: 22px;
+                width: 25px;
+                justify-content: center;
+                margin-right: 1rem;
+                cursor: pointer;
+    
+            }  
+            .mobile_menu_icon{
+                display: none;
+                font-size: 26px;
+                width: 25px;
+                justify-content: center;
+                cursor: pointer;
+            } 
+        }
+    }
+    
+
+    // DROPDOWN--------------------------------------------------------------------------->
+    .navdropdown_slides{
+        display: flex;
+        height: auto;
+        width: 100vw;
+        padding: 0;
+        // padding: 0 4rem 0 5.5rem;
+    }
+
+
+}
+
+.background_blur{
+    display: none;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.202);
+}
+.show_blur{
+    display: block;
+}
+
+
+//MOBILE VIEW1
+
+@media (max-width: 768px) {
+    
+    
+    .main_navbar_container {
+        .navdropdown_slides {
+            display: none;
+        }
+
+        .navbar {
+            padding: 1rem 1.5rem; 
+            height: 60px; 
+
+            .navleft {
+                font-size: 22px; // Logo size adjust kiya
+            }
+
+            .navright {
+                width: auto;
+                justify-content: flex-end; // Right side elements ko right align kiya
+
+                .navfeatures {
+                    display: none; // Desktop features ko hide kiya
+                }
+
+                .navbar_post {
+                    padding: 0 0.3rem;
+                    margin-right: 0.3rem;
+                    width: auto; 
+                    height: 1.5rem;
+                    font-size: 10px; 
+
+                    span {
+                        padding: .1rem .3rem;
+                        font-size: 6px;
+                    }
+                }
+                
+                // Desktop icons ko hide kiya
+                .desktop_icon {
+                    display: none;
+                }
+
+                .mobile_menu_icon {
+                    display: flex; // Sidebar toggle icon ko visible kiya
+                    font-size: 28px;
+                    margin-left: 0.8rem;
+                }
+            }
+        }
+    }
+
+    .sidebar_blur{
+        background-color: rgba(0, 0, 0, 0.502);
+        z-index: 1001;
+    }
+}

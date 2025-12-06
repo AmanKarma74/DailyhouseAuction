@@ -1,0 +1,316 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,400;1,500;1,700;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,700;1,6..12,200&display=swap');
+
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+*::before,
+*::after {
+    box-sizing: border-box; /* IMPORTANT FIX */
+}
+:root{
+
+  --font: 'Open Sans', Arial, 'Helvetica Neue', sans-serif;
+  --font2: 'Montserrat', Arial, sans-serif;
+  --fontweight: 500;
+  --dimcolor: #373737dc;
+  --body-font: "Poppins", sans-serif;
+  --heading-font:'Nunito Sans', sans-serif;
+}
+
+.sidebar{
+    display: flex;
+    position: fixed;
+    right: 0;
+    z-index: 1100;
+    height: 100vh;
+    width: 100%;
+    font-family: 'Open Sans', Arial, 'Helvetica Neue', sans-serif;
+    font-weight: var(--fontweight);
+
+    transform: translateX(100%); 
+    transition: all 0.5s ease;
+    
+    
+    
+    &_container{
+        height: 100%;
+        width: 27.2%;
+        background-color: #fff;
+        position: absolute;
+        right: 0;
+
+        .sidebar_nav{
+            display: flex;
+            height: 3rem;
+            justify-content: space-between;
+            align-items: center;
+            padding: .8rem 1.5rem;
+            background-color: #F4F5F7;
+
+            div{
+                color: #0078DB;
+                font-size: 14px;
+                font-weight: 600;
+                font-family: var(--font);
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 52%;
+                padding-left: .2rem;
+
+                span{
+                    font-size: 20px;
+                    position: relative;
+                    top: 2px;
+                    color: #555;
+                }
+            }
+
+            span{
+                color: black;
+                font-size: 21.2px;
+                position: relative;
+                top: 3px;
+                cursor: pointer;
+            }
+
+
+        }
+
+        .sidebar_menu{
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: 73%;
+            padding-left: 1.42rem;
+
+            hr{
+                border: none;
+                height: 1px;
+                margin-left: 1.3rem;
+                background-color: #eeee;
+            }
+
+            .side_post{
+                display: flex;
+                height: 7.44vh;
+                width: 100%;
+                background-color: #fff;
+                padding: 0rem 1.1rem;
+                align-items: center;
+                font-family: var(--font);
+                font-size: 14px;
+                font-weight: 600;
+                cursor: pointer;
+                color: #041533;
+
+                p{
+                    height: 29%;
+                    width: 14%;
+                    display: flex;
+                    background-color: #0078DB;
+                    justify-content: center;
+                    align-items: center;
+                    font-size: 9px;
+                    border-radius: 2px;
+                    color: white;
+                    margin-left: 10px;
+                }
+
+                &:hover{
+                    background-color: #e1e1e1;
+                }
+            }
+
+            .side_service{
+                display: flex;
+                height: 7.44vh;
+                width: 100%;
+                background-color: #fff;
+                padding: 0rem 1.1rem;
+                align-items: center;
+                font-family: var(--font);
+                font-size: 14px;
+                color: #373737;
+                cursor: pointer;
+                
+                &:hover{
+                    background-color: #e1e1e1;
+                }
+            }
+            
+            .side_offering_div{
+                height: 28%;
+                padding: .83rem 0;
+
+            }
+
+            .side_offering_div2{
+                height: 21.9%;
+                padding: .83rem 0;
+            }
+
+            .side_offer{
+                height: 35.2px;
+                display: flex;
+                align-items: center;
+                font-size: 14px;
+                font-family: var(--font);
+                padding: 0 1.2rem;
+                gap: 21px;
+                color: #373737;
+                cursor: pointer;
+
+                span{
+                    font-size: 8px;
+                    color: grey;
+                }
+
+                &:hover{
+                    background-color: #e1e1e1;
+                }
+
+            }
+
+            .dimcolor{
+                color: var(--dimcolor);
+            }
+        }
+
+        .sidebar_footer{
+            display: flex;
+            flex-direction: column;
+            justify-content: end;
+            height: 18.2%;
+            padding-left: 1.6rem;
+            gap: 15px;
+
+            form{
+                background-color: #F4F5F7;
+                border: none;
+                height: 3rem;
+                width: 90%;
+                border-radius: 3px;
+
+                input{
+                    height: 100%;
+                    width: 90%;
+                    background-color:#F4F5F7;
+                    padding-left: 15px;
+                    border: none;
+                    outline: none;
+                    font-size: 14px;
+                    font-family: var(--font);
+                    color: #373737;
+                    caret-color: var(--dimcolor);
+                }
+                span{
+                    color: gray;
+                    font-size: 19px;
+                    position: relative;
+                    top: 5px;
+                }
+            }
+
+            p{
+                font-size: 12px;
+                color: var(--dimcolor);
+
+                span{
+                    color: #0078DB;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
+.open{
+    transform: translateX(0);
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        // Poori screen ko cover karne ke liye width 100% rakhenge
+        width: 100%;
+        
+        &_container {
+            width: 80vw;
+
+            .sidebar_nav {
+                height: 3.5rem;
+                padding: .8rem 1rem;
+
+                div {
+                    font-size: 16px; 
+                    width: auto;
+                    gap: 7px;
+                    font-family: var(--font);
+
+                    span {
+                        font-size: 22px;
+                    }
+                }
+                span {
+                    font-size: 24px;
+                }
+            }
+
+            .sidebar_menu {
+                height: auto; 
+                padding-left: 0; 
+
+                hr {
+                    margin-left: 1rem;
+                }
+
+                .side_post, .side_service, .side_offer {
+                    padding: 0 1rem; 
+                    height: 45px; 
+                    font-size: 15px;
+                }
+                
+                .side_post p {
+                    width: auto;
+                    padding: 0 5px;
+                    font-size: 10px;
+                }
+
+                .side_offering_div, .side_offering_div2 {
+                    height: auto; // Height auto taki items fit ho saken
+                    padding: .5rem 0;
+                }
+                
+                .side_offer span {
+                    margin-right: 10px;
+                }
+
+            }
+
+            .sidebar_footer {
+                height: auto;
+                padding: 1.5rem 1rem 2rem 1rem; // Footer padding badhaya
+                gap: 10px;
+
+                form {
+                    width: 100%; // Form width 100%
+                    height: 2.8rem;
+                    
+                    input {
+                        width: 85%;
+                        font-size: 13px;
+                    }
+                }
+                
+                p {
+                    font-size: 11px;
+                }
+            }
+        }
+    }
+}

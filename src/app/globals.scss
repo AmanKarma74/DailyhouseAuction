@@ -1,0 +1,29 @@
+$font-open-sans: var(--font-open-sans);
+$font-montserrat: var(--font-montserrat);
+body {
+  font-family: $font-open-sans;
+}
+
+// 3. Apply Montserrat to headings
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-montserrat;
+}
+.light-text {
+  font-family: $font-open-sans;
+  font-weight: 300; 
+}
+
+.hero-title {
+  font-family: $font-montserrat;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+li, ul{
+  text-decoration: none;
+  list-style-type: none;
+}

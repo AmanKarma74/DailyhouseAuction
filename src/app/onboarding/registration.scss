@@ -1,0 +1,266 @@
+/* <--------------------------------------- ROOT VARIABLE ------------------------------------------------> */
+/*===== GOOGLE FONTS =====*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,700;1,6..12,200&display=swap');
+/*===== VARIABLES CSS =====*/
+:root {
+  --header-height: 3rem;
+  /*========== Colors ==========*/
+  --first-color: #069C54;
+  --first-color-alt: #048654;
+  --mainTitle-color: #141824;
+  --title-color: #004dff;
+  --title-color-light:rgb(38, 101, 249);
+  --text-color: #6E7891;
+  --text-color-light: #A6A6A6;
+  --body-color: #fff;
+  --container-color: #F5F7FA;
+  /*========== Font and typography ==========*/
+  --body-font: "Poppins", sans-serif;
+  --heading-font:'Nunito Sans', sans-serif;
+  --biggest-font-size: 2.25rem;
+  --h1-font-size: 1.5rem;
+  --h2-font-size: 1.25rem;
+  --h3-font-size: 1rem;
+  --normal-font-size: .938rem;
+  --small-font-size: .813rem;
+  --smaller-font-size: .75rem;
+  /*========== Font weight ==========*/
+  --font-medium: 500;
+  --font-semi-bold: 600;
+  /*========== Margenes ==========*/
+  --mb-1: .5rem;
+  --mb-2: 1rem;
+  --mb-3: 1.5rem;
+  --mb-4: 2rem;
+  --mb-5: 2.5rem;
+  --mb-6: 3rem;
+  /*========== z index ==========*/
+  --z-tooltip: 10;
+  --z-fixed: 100;
+}
+@media screen and (min-width: 768px) {
+  :root {
+    --biggest-font-size: 4rem;
+    --h1-font-size: 2.25rem;
+    --h2-font-size: 1.5rem;
+    --h3-font-size: 1.25rem;
+    --normal-font-size: 1rem;
+    --small-font-size: .875rem;
+    --smaller-font-size: .813rem;
+  }
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/*========== BASE ==========*/
+*, ::before, ::after {
+  box-sizing: border-box;
+}
+
+a{
+    text-decoration: none;
+}
+
+input{
+    border: none;
+    outline: none;
+}
+
+/* <--------------------------------------- PAGE STYLING ------------------------------------------------> */
+.profile-page-container {
+    display: flex;
+    justify-content: center;
+    padding: var(--mb-4) 0;
+    background-color: var(--container-color); // Use background from your auth page
+    min-height: 100vh;
+    background-color: bisque;
+}
+
+.profile-detail-form {
+    background: var(--body-color);
+    padding: 3rem;
+    padding-top: 2rem;
+    width: 95%;
+    max-width: 800px; 
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    box-shadow: 2px 2px 3px -1px rgba(0, 0, 0, 0.5);
+    position: relative;
+    box-sizing: border-box;
+}
+
+.profile-header {
+    font-size: var(--h1-font-size);
+    color: var(--mainTitle-color);
+    font-weight: var(--font-semi-bold);
+    margin-bottom: var(--mb-3);
+    text-align: center;
+    font-family: var(--body-font);
+}
+
+.brand-logo{
+    color: var(--title-color);
+    margin-bottom: 1rem;
+    font-family: var(--body-font);
+    text-align: center;
+}
+
+.form-section {
+    padding: var(--mb-3);
+    border: 1px solid #f0f0f0;
+    border-radius: 8px;
+    margin-bottom: var(--mb-1);
+    background-color: #fcfcfc;
+}
+
+.section-label {
+    display: block;
+    font-size: var(--h3-font-size);
+    color: var(--title-color);
+    font-weight: var(--font-semi-bold);
+    margin-bottom: var(--mb-3);
+    font-family: var(--body-font);
+    font-family: var(--heading-font);
+}
+
+.section-title {
+    font-size: var(--h3-font-size);
+    font-family: var(--heading-font);
+    color: var(--mainTitle-color);
+    font-weight: var(--font-semi-bold);
+    margin-top: 0;
+    margin-bottom: var(--mb-2);
+    border-bottom: 2px solid var(--container-color);
+    padding-bottom: var(--mb-1);
+}
+
+// ---------------------------------------------------
+// User Type Selection (Radio Group) Styling
+// ---------------------------------------------------
+
+.radio-group {
+    display: flex;
+    gap: 35px;
+    justify-content: space-around;
+}
+
+.type-option {
+    flex-grow: 1;
+    text-align: center;
+    padding: 12px 15px;
+    border: 2px solid var(--container-color);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background-color: var(--body-color);
+    font-weight: var(--font-medium);
+    color: var(--text-color);
+    border: 0.888889px solid rgb(199, 210, 224);
+
+    input[type="radio"] {
+        display: none; // Hide the default radio button
+    }
+
+    &:hover {
+        border-color: var(--title-color-light);
+    }
+
+    &.selected {
+        border-color: var(--title-color);
+        background-color: rgba(var(--title-color-light), 0.1);
+        color: var(--title-color);
+        font-weight: var(--font-semi-bold);
+        box-shadow: 0 2px 5px rgba(0, 77, 255, 0.1);
+    }
+}
+
+.auth-input-detail {
+    margin-bottom: var(--mb-2);
+    width: 100%;
+    height: 48px;
+    margin: 5px;
+    padding: 15px;
+    font-size: 15px;
+    color: var(--mainTitle-color);
+    border: 0.888889px solid rgb(199, 210, 224);
+    border-radius: 5px;
+
+    &::placeholder{
+        color: var(--text-color-light);
+    }
+
+    &:focus{
+        border: 2px solid var(--title-color);
+    }
+}
+.extragap{
+    margin-bottom: 1.2rem;
+}
+
+.large-btn {
+    padding: 25px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--h3-font-size);
+    border-radius: 25px; // Slightly larger button style
+    margin-top: var(--mb-4);
+}
+
+.input-hint {
+    display: block;
+    font-size: var(--smaller-font-size);
+    color: var(--text-color-light);
+    margin-top: -10px;
+    // margin-bottom: 10px;
+    text-align: left;
+    padding-left: 15px;
+}
+
+.auth-submit-btn-registration {
+    width: 100%;
+    height: 40px;
+    border: hidden;
+    border-radius: 20px; 
+    color: var(--body-color);
+    font-weight: var(--font-semi-bold);
+    font-size: 16px;
+    margin: var(--mb-2) 0; 
+    background-color: var(--title-color-light); 
+
+    &:hover {
+        background-color: var(--title-color); 
+        cursor: pointer;
+    }
+}
+
+.auth-submit-btn-registration[disabled] {
+    background-color: var(--text-color-light); /* Grey out the background */
+    cursor: not-allowed; /* Change cursor */
+    opacity: 0.6; /* Slight transparency */
+    
+    // Override hover effects defined for the active state
+    &:hover {
+        background-color: var(--text-color-light);
+        transform: translateY(0);
+    }
+}
+
+//Responsive Design ------------------------------------------------------------------------------>
+@media (max-width: 768px) {
+.profile-page-container {
+    padding: var(--mb-1) 0;
+    min-height: 100vh;
+
+    .profile-detail-form {
+        padding: .8rem;
+        padding-top: 2rem;
+        width: 95%;
+        max-width: 800px;
+    }
+}
+
+}
