@@ -27,7 +27,7 @@ async function Property({ params }) {
   // ============================
   try {
     const res = await fetch(
-      `api/properties/${propertyid}`,
+      `/api/properties/${propertyid}`,
       { method: "GET", cache: "no-store" }
     );
 
