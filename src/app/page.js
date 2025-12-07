@@ -23,7 +23,8 @@ import propertyGuideBanner from "../../public/assets/Property_Guide_Banner.png";
 // 🔥 FETCH PROPERTIES SERVER-SIDE
 // -------------------------------
 
-async function getHandpickedProperties() {
+export default async function Home() {
+  // Fetch actual data from backend
   try {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_BASE_URL}/api/properties?limit=20`,
@@ -52,11 +53,6 @@ async function getHandpickedProperties() {
     console.error("Home Page Property Fetch Error:", err);
     return [];
   }
-}
-
-export default async function Home() {
-  // Fetch actual data from backend
-  const handpicked = await getHandpickedProperties();
 
   return (
     <>
