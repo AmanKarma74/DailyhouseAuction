@@ -29,7 +29,7 @@ export default async function Home() {
 
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/api/properties?limit=20`,
+      `${process.env.NEXTAUTH_URL}/api/properties?limit=20`,
       {
         method: "GET",
         cache: "no-store", // SSR fetch (fresh every time)

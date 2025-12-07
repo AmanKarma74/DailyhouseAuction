@@ -6,6 +6,7 @@ import dbConnect from "@/lib/dbConnect";
 import Property from "@/models/Property";
 import cloudinary from "@/lib/cloudinaryConfig";
 import mongoose from "mongoose";
+import User from "@/models/User";
 
 export const runtime = "nodejs";
 

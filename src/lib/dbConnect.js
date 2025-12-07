@@ -9,10 +9,6 @@ if (!MONGODB_URI) {
     'Please define the MONGODB_URI environment variable inside .env.local'
   );
 }
-
-// 2. Caching mechanism for Next.js (bohot important)
-// Yeh ensure karta hai ki development ke time, hot-reload hone par 
-// MongoDB baar-baar connect na ho.
 let cached = global.mongoose;
 
 if (!cached) {
