@@ -25,34 +25,35 @@ import propertyGuideBanner from "../../public/assets/Property_Guide_Banner.png";
 
 export default async function Home() {
   // Fetch actual data from backend
+  let handpicked = [];
+
   try {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_BASE_URL}/api/properties?limit=20`,
       {
         method: "GET",
-        cache: "no-store", // always fresh on each SSR
+        cache: "no-store", // SSR fetch (fresh every time)
       }
     );
 
     const data = await res.json();
 
-    if (!data.success) return [];
-
-    // Convert propertyImage → img[] (what UI expects)
-    return data.properties.map((item) => ({
-      ...item,
-      img: Array.isArray(item.propertyImage)
-        ? item.propertyImage.map((url) => ({
-            url,
-            preview: url,
-            name: "property-image",
-          }))
-        : [],
-    }));
+    if (data?.success) {
+      handpicked = data.properties.map((item) => ({
+        ...item,
+        img: Array.isArray(item.propertyImage)
+          ? item.propertyImage.map((url) => ({
+              url,
+              preview: url,
+              name: "property-image",
+            }))
+          : [],
+      }));
+    }
   } catch (err) {
     console.error("Home Page Property Fetch Error:", err);
-    return [];
   }
+
 
   return (
     <>

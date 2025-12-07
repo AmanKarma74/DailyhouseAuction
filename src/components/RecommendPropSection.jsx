@@ -6,7 +6,7 @@ import "../styles/recommendPropSection.scss";
 import { BsArrowRight, BsArrowLeft } from "react-icons/bs";
 import { IoIosArrowRoundForward } from "react-icons/io";
 
-function RecommendPropSection({ cardData = [] }) {
+function RecommendPropSection({ cardData}) {
   const [activeCardIndex, setActiveCardIndex] = useState(0);
   const cardContainerRef = useRef(null);
 

@@ -96,7 +96,7 @@ function CategoryCard() {
 
         <div className="category_card_slider" ref={cardContainerRef}>
         {Categories.map((data, index) => (
-          <Link href={data.url}>
+          <Link href={data.url} key={index}>
             <div key={index} className="card_holder_div">
 
                 <div className="main_container" style={{backgroundColor: `${data.color}`}}>
