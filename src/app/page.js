@@ -1,3 +1,4 @@
+// srch/app/page.js
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -19,13 +20,14 @@ import propertyGuideBanner from "../../public/assets/Property_Guide_Banner.png";
 // -------------------------------
 // 🔥 FETCH PROPERTIES SERVER-SIDE
 // -------------------------------
+export const revalidate = 3600;
 async function getHandpickedProperties() {
   try {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_BASE_URL}/api/properties?limit=20`,
       {
         method: "GET",
-        cache: "no-store", // always fresh on each SSR
+        cache: "force-cache", 
       }
     );
 
