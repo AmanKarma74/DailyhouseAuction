@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 // srch/app/page.js
 import React from "react";
 import Image from "next/image";
@@ -20,14 +22,14 @@ import propertyGuideBanner from "../../public/assets/Property_Guide_Banner.png";
 // -------------------------------
 // 🔥 FETCH PROPERTIES SERVER-SIDE
 // -------------------------------
-export const revalidate = 3600;
+
 async function getHandpickedProperties() {
   try {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_BASE_URL}/api/properties?limit=20`,
       {
         method: "GET",
-        cache: "force-cache", 
+        cache: "no-store", // always fresh on each SSR
       }
     );
 
