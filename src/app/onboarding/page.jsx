@@ -171,7 +171,7 @@ const OnboardingPage = () => {
 
       if (res.ok) {
         alert(data.message);
-        router.push("/profile/status");
+        router.push("/profile");
       } else {
         setError(data.message);
       }
