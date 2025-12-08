@@ -24,7 +24,7 @@ const nextConfig = {
   experimental: {
     optimizePackageImports: ["lucide-react", "zustand"],
     serverActions: {
-      allowedOrigins: ["localhost:3000"],
+      allowedOrigins: ["localhost:3000", "https://dailyhouse-auction-542t.vercel.app"],
     },
   },
 

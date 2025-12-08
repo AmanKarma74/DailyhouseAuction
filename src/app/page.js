@@ -5,6 +5,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import "./home.scss";
+// import User from "@/models/User";
 
 // Components
 import Mainnavbar from "../components/Mainnavbar";
@@ -29,7 +30,7 @@ export default async function Home() {
 
   try {
     const res = await fetch(
-      `${process.env.NEXTAUTH_URL}/api/properties?limit=20`,
+      `${process.env.NEXT_PUBLIC_BASE_URL}/api/properties?limit=20`,
       {
         method: "GET",
         cache: "no-store", // SSR fetch (fresh every time)
