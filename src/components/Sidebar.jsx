@@ -1,5 +1,8 @@
 "use client"
 import React, { useState } from 'react'
+import { useSession } from "next-auth/react";
+import Link from 'next/link';
+import { useRouter } from "next/navigation";
 import '../styles/sidebar.scss'
 
 // Icons
@@ -8,12 +11,21 @@ import { RxCross2 } from "react-icons/rx";
 import { IoPlaySharp, IoSearchOutline } from "react-icons/io5";
 
 function Sidebar({ isOpen, onClose }) {
+
+  const { data: session } = useSession();
+  const isLoggedIn = !!session;
     
-  const [searchTerm, setSearchTerm] = useState('')
+  const [propertyId, setPropertyId] = useState('')
+  const router = useRouter()
+
+  const handleSearchSubmit = () => {
+    router.push(`/property/${propertyId}`)
+  }
 
 
-  const handleSearchChange = (event) => {
-    setSearchTerm(event.target.value);
+  const handleChange = (event) => {
+
+    setPropertyId(event.target.value);
     };
 
     
@@ -23,14 +35,26 @@ function Sidebar({ isOpen, onClose }) {
 
     <div className="sidebar_container">
 
-        <div className='sidebar_nav'>          
+        <div className='sidebar_nav'>    
+
+            {isLoggedIn ?
+            <Link href='/profile'>
+            <div> <span><FaUserCircle /></span> PROFILE</div>
+            </Link>
+            :
+            <Link href='/auth'>
             <div> <span><FaUserCircle /></span> LOGIN / REGISTER</div>
+            </Link>
+            }
+
             <span onClick={onClose}><RxCross2 /></span>
         </div>
 
         <div className='sidebar_menu'>
 
+            <Link href='/post-property'>
             <div className='side_post'>Post Property <p>FREE</p></div>
+            </Link>
 
             <hr />
 
@@ -62,8 +86,8 @@ function Sidebar({ isOpen, onClose }) {
 
         <div className='sidebar_footer'>
             <form>
-                <input type="text" placeholder='Search by Property Code' value={searchTerm} onChange={handleSearchChange} />
-                <span><IoSearchOutline /> </span>
+                <input type="text" placeholder='Search by Property ID' value={propertyId} onChange={handleChange} />
+                <span onClick={handleSearchSubmit}><IoSearchOutline /> </span>
             </form>
 
             <p>Toll Free Number: 1800 41 99099. <br />

@@ -165,6 +165,8 @@
                             display: flex;
                             flex-direction: column;
                             gap: .3rem;
+                            white-space: nowrap;
+                            text-overflow: ellipsis;
 
                             h6{
                                 width: 200.222px;
@@ -175,12 +177,16 @@
                                 font-family: var(--font);
                                 font-weight: 700;
                                 white-space: nowrap;
+                                text-overflow: ellipsis;
                                 line-height: 22px;
                                 color: rgb(51, 51, 51);
-
+                                
                                 @media (max-width: 600px) {
+                                    width: 150px;
+                                    overflow: hidden;
+                                    white-space: nowrap;
+                                    text-overflow: ellipsis;
                                     font-size: 14px;
-                                    width: auto;
                                 }
                             }
                             .rating{

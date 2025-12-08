@@ -177,7 +177,9 @@ function Mainnavbar({featureColor, postBgColor, logoColor}) {
     <section className={navbarStyle.main_navbar_container}>
 
     <nav className={navbarStyle.navbar}>
+        <Link href='/'>
         <div className={navbarStyle.navleft}>Logo</div>
+        </Link>
 
         <div className={navbarStyle.navright}>
 

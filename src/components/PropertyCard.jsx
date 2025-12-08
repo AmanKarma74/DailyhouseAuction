@@ -63,7 +63,7 @@ function PropertyCard({ data }) {
         <p className="card_prop_location">{data.location}</p>
         <p className="card_prop_stage">{data.status}</p>
 
-        <Link href={`/properties/${data._id}`}><button className="button">View Details</button></Link>
+        <Link href={`/property/${data._id}`}><button className="button">View Details</button></Link>
       </div>
     </div>
   );

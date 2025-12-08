@@ -26,7 +26,6 @@ async function Property({ params }) {
   // FETCH PROPERTY FROM DB
   // ============================
   try {
-    console.log("property fectching starts")
     const res = await fetch(
       `${process.env.NEXTAUTH_URL}/api/properties/${propertyid}`,
       { method: "GET", cache: "no-store" }
@@ -35,7 +34,7 @@ async function Property({ params }) {
 
     const data = await res.json();
     if (data.success) {
-      PropertyData = data.property;
+      PropertyData = data.property; 
 
       // ---------------------------------------
       // 🔥 NORMALIZE ALL FIELDS FOR UI
@@ -82,7 +81,6 @@ async function Property({ params }) {
           PropertyData.completionTime
         ).toLocaleDateString("en-IN");
       }
-      console.log("property fectching compelets, data: ", PropertyData)
     }
   } catch (err) {
     console.error("Error fetching property:", err);

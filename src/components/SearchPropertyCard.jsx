@@ -2,6 +2,8 @@
 import React, {useState} from 'react'
 import '../styles/searchPropertyCard.scss'
 import Image from 'next/image';
+import Link from 'next/link';
+import { useRouter } from "next/navigation";
 
 //icons
 import { FaCheck } from "react-icons/fa6";
@@ -11,7 +13,6 @@ import { HiOutlineDotsVertical } from "react-icons/hi";
 import { FaAngleDown } from "react-icons/fa6";
 
 function SearchPropertyCard({PropertyData}) {
-    console.log(PropertyData)
     const [isExpanded, setIsExpanded] = useState(false);
 
     const toggleExpand = () => {
@@ -79,24 +80,24 @@ function SearchPropertyCard({PropertyData}) {
         { key: "constructionType", label: "CONSTRUCTION TYPE" },
         { key: "permission", label: "PERMISSION" },
 
-        { key: "waterSource", label: "WATER SUPPLY", excludeValue: "Not Available" },
-        { key: "propertySurrounding", label: "SURROUNDING", excludeValue: "One Side Open" },
-
+        
         { key: "facing", label: "FACING" },
         { key: "furniture", label: "FURNISHING" },
         { key: "totalBedrooms", label: "BEDROOMS" },
         { key: "bathroom", label: "BATHROOMS" },
         { key: "balcony", label: "BALCONY" },
         { key: "carParking", label: "CAR PARKING" },
-
+        
+        { key: "waterSource", label: "WATER SUPPLY", excludeValue: "Not Available" },
         { key: "propertyFloor", label: "FLOOR" },
         { key: "totalFloors", label: "TOTAL FLOORS" },
-
+        
         // For shops
         { key: "shopLocationType", label: "LOCATION TYPE" },
-
+        
         // Status logic
         { key: "transactionType", label: "TRANSACTION" },
+        { key: "propertySurrounding", label: "SURROUNDING", excludeValue: "One Side Open" },
     ];
     const getFilteredExtraDetails = (data) => {
   const details = [];
@@ -161,9 +162,12 @@ function SearchPropertyCard({PropertyData}) {
 
   return details;
 };
-
-
     const extraDetails = getFilteredExtraDetails(PropertyData);
+
+    const Router = useRouter()
+    const GetDetailForMobile = (id) => {
+        Router.push(`/property/${id}`)
+    }
 
     
 
@@ -174,7 +178,7 @@ function SearchPropertyCard({PropertyData}) {
     <div className="search_prop_card_main_container">
 
 
-        <div className='image_container'>
+        <div className='image_container' onClick={() => GetDetailForMobile(`${PropertyData._id}`)}>
         <Image src={PropertyData.propertyImage[0]} alt="image" fill
             sizes="(max-width: 600px) 100vw, 300px" />
         </div>
@@ -187,13 +191,13 @@ function SearchPropertyCard({PropertyData}) {
             </div>
 
             <h3 className='responsiv_price'>{formatIndianPrice(PropertyData.price)}</h3>
-            <div className='prop_heading'>
+            <div className='prop_heading' onClick={() => GetDetailForMobile(`${PropertyData._id}`)}>
                 <h2>{PropertyData.propertyCategory == 'House/Flat'? PropertyData.totalBedrooms+'BHK' : ''} {PropertyData.propertyType? PropertyData.propertyType : PropertyData.propertyCategory} for Sale in {PropertyData.location}</h2>
                 <h5>{PropertyData.buildingOrColonyName}</h5>
             </div>
 
             {extraDetails.length > 0 && (
-                    <div className="prop_details">
+                    <div className="prop_details" onClick={() => GetDetailForMobile(`${PropertyData._id}`)}>
                     {extraDetails.map((item, index) => {
                         const isFirstInColumn = index % 3 === 0;
                         const className = `prop_details_item ${isFirstInColumn ? '' : 'leftborder'}`;
@@ -209,7 +213,7 @@ function SearchPropertyCard({PropertyData}) {
                     )}
             
 
-            <div className='prop_description'>
+            <div className='prop_description' onClick={() => GetDetailForMobile(`${PropertyData._id}`)}>
                 {PropertyData.description.length <= 150? PropertyData.description :<>
                 {isExpanded? PropertyData.description : PropertyData.description.slice(0,150) + '...'}
                 <button onClick={toggleExpand}>{isExpanded? 'Read less' : <FaAngleDown />}</button>
@@ -224,7 +228,9 @@ function SearchPropertyCard({PropertyData}) {
 
             <div className='action_buttons'>
                 <div className="callback_button">Contact Us</div>
+                <Link href={`/property/${PropertyData._id}`}>
                 <div className="getinfo_button">Get Info</div>
+                </Link>
             </div>
             <div className='prop_builder'>
                 <p>Get Home Loan</p>

@@ -232,7 +232,9 @@ useEffect(() => {
   // -----------------------------------------------
   // BUILD SEARCH URL AND REDIRECT TO /search
   // -----------------------------------------------
+  const [searchLoading, setSearchLoading] = useState(false)
   const handleSearch = () => {
+  setSearchLoading(true)
   const category = CATEGORY_MAP[propCategory];
   const maxPriceNumber = parseBudgetToNumber(budget);
 
@@ -269,7 +271,6 @@ useEffect(() => {
   // BUILD QUERY PARAMS
   // -----------------------------
   const params = new URLSearchParams();
-  console.log(selectedPropertyTypes)
 
   if (category) params.set("category", category);
   params.set("purpose", "Sell");
@@ -285,7 +286,6 @@ useEffect(() => {
     params.set("bhk", finalBhk.join(",")); // only valid BHK apply
 
   params.set("tab", propCategory);
-  console.log("params", params.toString())
 
   router.push(`/search?${params.toString()}`);
 };
@@ -454,10 +454,18 @@ useEffect(() => {
           </div>
 
           {/* SEARCH BUTTON */}
-          <div className="search_button" onClick={handleSearch}>
-            <IoSearch className="searchicon" />
-            Search
-          </div>
+          <button className="search_button" onClick={handleSearch} disabled={searchLoading}>
+            {searchLoading? 
+            <>
+              Searching
+            </>
+            :
+            <>
+              <IoSearch className="searchicon" />
+              Search
+            </>
+          }
+          </button>
         </div>
       </div>
 
