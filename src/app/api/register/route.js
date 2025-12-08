@@ -4,6 +4,7 @@ import { NextResponse } from "next/server";
 import dbConnect from "@/lib/dbConnect";
 import User from "@/models/User";
 import { hashPassword } from "@/lib/authUtils";
+import User from "@/models/User";
 
 export async function POST(request) {
   try {
