@@ -3,6 +3,7 @@
 import { NextResponse } from "next/server";
 import dbConnect from "@/lib/dbConnect";
 import Property from "@/models/Property";
+import User from "@/models/User";
 
 
 
